@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  postgres_db:
+    container_name: postgres_db
+    build: ./postgres
+    image: py__postgres_db
+    restart: always
+    volumes:
+      - postgres_db_volume:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    ports:
+      - ${PY_POSTGRES_PORT}:5432
+
+volumes:
+  postgres_db_volume:
