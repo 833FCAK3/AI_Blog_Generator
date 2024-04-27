@@ -1,7 +1,6 @@
 all: build down up
 
-test: testpy testgo
-
+# Docker
 build:
 	docker-compose build --no-cache
 
@@ -20,6 +19,7 @@ stop:
 clnimg:
 	docker image prune -f
 
+# Django
 migrations:
 	python manage.py makemigrations
 
