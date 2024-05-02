@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from functools import lru_cache
 
 import assemblyai as aai
 import openai
@@ -80,6 +81,7 @@ def download_audio(link):
     return new_file
 
 
+@lru_cache
 def get_transcription(link, lang):
     try:
         audio_file = download_audio(link)
