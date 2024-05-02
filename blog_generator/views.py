@@ -1,6 +1,5 @@
 import json
 import os
-import re
 from functools import lru_cache
 
 import assemblyai as aai
@@ -77,18 +76,18 @@ def download_audio(link):
         out_file = video.download(output_path=settings.MEDIA_ROOT)
     base, ext = os.path.splitext(out_file)
     new_file = base + ".mp3"
-    os.rename(out_file, new_file)
+
+    try:
+        os.rename(out_file, new_file)
+    except FileExistsError:
+        os.remove(out_file)
+
     return new_file
 
 
 @lru_cache
 def get_transcription(link, lang):
-    try:
-        audio_file = download_audio(link)
-    except FileExistsError as e:
-        match = re.search(r"-> '(.+\.mp3)'", str(e))
-        if match:
-            audio_file = match.group(1)
+    audio_file = download_audio(link)
 
     aai.settings.api_key = api_keys.assemblyai_key
     config = aai.TranscriptionConfig(language_code=lang)
