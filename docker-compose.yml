@@ -1,6 +1,24 @@
 version: "3.8"
 
 services:
+  ai_blog_app:
+    container_name: ai_blog_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: ai_blog__app
+    restart: always
+    depends_on:
+      - postgres_db
+      - ollama_app
+    env_file:
+      - .env
+    environment:
+      WAIT_HOSTS: postgres_db:5432, ollama_app:11434
+    command: bash -c "python manage.py runserver"
+    ports:
+      - ${DJANGO_PORT:-8000}:8000
+
   ollama_app:
     container_name: ollama_app
     build: ./ollama
@@ -12,7 +30,7 @@ services:
       - .env
     ports:
       - ${OLLAMA_PORT}:11434
-  
+
   postgres_db:
     container_name: postgres_db
     build: ./postgres
@@ -24,7 +42,6 @@ services:
       - .env
     ports:
       - ${POSTGRES_PORT}:5432
-    
 
 volumes:
   postgres_db_volume:

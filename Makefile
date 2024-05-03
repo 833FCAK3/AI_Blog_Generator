@@ -41,6 +41,9 @@ app:
 static:
 	python manage.py collectstatic
 
+edjango:
+	docker exec -it ai_blog_app bash
+
 # Ollama
 pull_llama3:
 	docker exec -it ollama_app bash -c "ollama pull llama3"  
