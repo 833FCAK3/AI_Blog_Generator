@@ -1,17 +1,31 @@
 version: "3.8"
 
 services:
+  ollama_app:
+    container_name: ollama_app
+    build: ./ollama
+    image: ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_volume:/root/.ollama
+    env_file:
+      - .env
+    ports:
+      - ${OLLAMA_PORT}:11434
+  
   postgres_db:
     container_name: postgres_db
     build: ./postgres
-    image: py__postgres_db
-    restart: always
+    image: postgres_db
+    restart: unless-stopped
     volumes:
       - postgres_db_volume:/var/lib/postgresql/data/
     env_file:
       - .env
     ports:
-      - ${PY_POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT}:5432
+    
 
 volumes:
   postgres_db_volume:
+  ollama_volume:

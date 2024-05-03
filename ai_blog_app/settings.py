@@ -91,7 +91,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "localhost",
-        "PORT": os.getenv("PY_POSTGRES_PORT", "5432"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
     }
 }
 

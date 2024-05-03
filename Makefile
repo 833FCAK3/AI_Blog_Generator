@@ -1,4 +1,4 @@
-all: build down up
+all: build down up pull_llama3 migrate run
 
 # Docker
 build:
@@ -40,3 +40,10 @@ app:
 
 static:
 	python manage.py collectstatic
+
+# Ollama
+pull_llama3:
+	docker exec -it ollama_app bash -c "ollama pull llama3"  
+
+eollama:
+	docker exec -it ollama_app bash
