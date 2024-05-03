@@ -21,25 +21,25 @@ clnimg:
 
 # Django
 migrations:
-	python manage.py makemigrations
+	python ./django/manage.py makemigrations
 
 migrate:
-	python manage.py migrate
+	python ./django/manage.py migrate
 
 run:
-	python manage.py runserver	
+	python ./django/manage.py runserver
 
 super:
-	python manage.py createsuperuser
+	python ./django/manage.py createsuperuser
 
 proj:
 	django-admin startproject $(p)
 
 app:
-	python manage.py start app $(a)
+	python ./django/manage.py start app $(a)
 
 static:
-	python manage.py collectstatic
+	python ./django/manage.py collectstatic
 
 edjango:
 	docker exec -it ai_blog_app bash
