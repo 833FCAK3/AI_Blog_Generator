@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: ai_blog__app
-    restart: always
+    restart: unless-stopped
     depends_on:
       - postgres_db
       - ollama_app
