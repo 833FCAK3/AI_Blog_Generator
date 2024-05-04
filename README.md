@@ -29,3 +29,5 @@ docker-compose run ai_blog_app bash -c "python manage.py migrate"
 docker exec -it ollama_app bash -c "ollama pull llama3" 
 docker-compose up -d 
 ```
+Access the app on:
+http://127.0.0.1:8000
