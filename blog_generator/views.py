@@ -111,8 +111,9 @@ def generate_blog_from_transcription_chatgpt(transcription):
 
 
 def generate_blog_from_transcript_ollama_local(transcription):
+    ollama_host = os.getenv("OLLAMA_HOST_", "localhost")
     ollama_port = os.getenv("OLLAMA_PORT", "11434")
-    url = f"http://localhost:{ollama_port}/api/generate"
+    url = f"http://{ollama_host}:{ollama_port}/api/generate"
     headers = {"Content-Type": "application/json"}
     prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcription}\n\nArticle:"
     data = {

@@ -14,8 +14,11 @@ COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
 # Copy Django files
-COPY /django /django
 WORKDIR /django
+COPY /ai_blog_app /django/ai_blog_app
+COPY /blog_generator /django/blog_generator
+COPY /templates /django/templates
+COPY api_keys.py manage.py /django/
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.11.0/wait /wait
 RUN chmod +x /wait
