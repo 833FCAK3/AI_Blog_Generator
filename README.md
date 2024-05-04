@@ -21,3 +21,11 @@ Clone repo:
 ````
 >>> make
 ````
+In case you do not have ```make```:
+```
+docker-compose build --no-cache
+docker-compose down
+docker-compose run ai_blog_app bash -c "python manage.py migrate"
+docker exec -it ollama_app bash -c "ollama pull llama3" 
+docker-compose up -d 
+```
