@@ -27,7 +27,7 @@ migrate:
 	python ./django/manage.py migrate
 
 migrate_c:
-	docker exec -it ai_blog_app bash -c "python manage.py migrate"
+	docker-compose run ai_blog_app bash -c "python manage.py migrate"
 
 run:
 	python ./django/manage.py runserver

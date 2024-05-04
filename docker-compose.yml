@@ -1,11 +1,9 @@
-version: "3.8"
-
 services:
   ai_blog_app:
     container_name: ai_blog_app
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./django/Dockerfile
     image: ai_blog__app
     restart: always
     depends_on:
@@ -40,8 +38,8 @@ services:
       - postgres_db_volume:/var/lib/postgresql/data/
     env_file:
       - .env
-    ports:
-      - ${POSTGRES_PORT}:5432
+    # ports:
+    #   - ${POSTGRES_PORT}:5432
 
 volumes:
   postgres_db_volume:

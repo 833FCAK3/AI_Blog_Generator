@@ -15,8 +15,8 @@ Clone repo:
 - Install [docker-compose](https://docs.docker.com/compose/install/)
 - *For convenience install [MAKE Windows](http://gnuwin32.sourceforge.net/packages/make.htm), otherwise run all the commands from makefile under ```all```
 
-- Configure app ports and timezonr in ```.env``` file
-- Rename ```api_keys_example.py``` into ```api_keys.py``` and set your [assemblyai](https://www.assemblyai.com) there.
+- Configure app ports and timezone in ```.env``` file
+- Rename ```api_keys_example.py``` into ```api_keys.py``` and set your [assemblyai](https://www.assemblyai.com) ```api key``` there.
 - Launch app with: 
 ````
 >>> make

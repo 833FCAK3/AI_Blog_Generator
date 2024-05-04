@@ -1,2 +1,2 @@
-openai_key = ""
 assemblyai_key = ""
+openai_key = ""
